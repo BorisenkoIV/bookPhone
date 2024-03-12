@@ -1,3 +1,5 @@
+// Простейший телефонный справочник (записная книжка)
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +17,7 @@ class Phones {
             map.put(key, list);
         }
     }
-       // Печатаем список контактов:
+       // Печатаем отсортированный список контактов:
     public static void printBook (Map<String, ArrayList<Integer>> map) {
         for (var item : map.entrySet()) {
             String phones = "";
@@ -26,6 +28,7 @@ class Phones {
         }
     }
 public static void main(String[] args) {
+        // Заполняем телефонный справочник:
         Map <String, ArrayList <Integer>> bookPhone = new HashMap<>();
         addNumber("Ivanov", 123456, bookPhone);
         addNumber("Ivanov", 1234, bookPhone);
@@ -34,19 +37,14 @@ public static void main(String[] args) {
         addNumber("Ivanov", 12345678, bookPhone);
         addNumber("Petrov", 787897, bookPhone);
         System.out.print(bookPhone + "\n\n");
-        // System.out.print(bookPhone + "\n\n");
-        // System.out.println(bookPhone.get("Ivanov"));
-        // var sort_vrem = new ArrayList<>(bookPhone.get("Ivanov"));
-        // Collections.sort(sort_vrem, Collections.reverseOrder());
-        // System.out.println(sort_vrem);
-        // bookPhone.put("Ivanov", sort_vrem);
-
-        //Перебираем Hashmap, используя цикл for с методом keySet():
+        
+        //Перебираем Hashmap и сортируем телефоны, используя цикл for с методом keySet():
         for (String key : bookPhone.keySet()) {
             var sort_vrem = new ArrayList<>(bookPhone.get(key));
             Collections.sort(sort_vrem, Collections.reverseOrder());
             bookPhone.put(key, sort_vrem);
         }
+        // Передаем данные на печать:
         printBook(bookPhone);
   
     }
