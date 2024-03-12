@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+//import java.util.List;
+import java.util.Collections;
 
 class Phones {
     // Добавляем номер в телефонную книгу:
@@ -24,9 +26,6 @@ class Phones {
         }
        
     }
-
-
-
 public static void main(String[] args) {
         Map <String, ArrayList <Integer>> bookPhone = new HashMap<>();
         addNumber("Ivanov", 123456, bookPhone);
@@ -37,6 +36,14 @@ public static void main(String[] args) {
         addNumber("Petrov", 787897, bookPhone);
         
         System.out.print(bookPhone + "\n\n");
+        System.out.println(bookPhone.get("Ivanov"));
+        var sort_vrem = new ArrayList<>(bookPhone.get("Ivanov"));
+        Collections.sort(sort_vrem, Collections.reverseOrder());
+        System.out.println(sort_vrem);
+        bookPhone.put("Ivanov", sort_vrem);
+
+
         printBook(bookPhone);
+        
     }
 }
