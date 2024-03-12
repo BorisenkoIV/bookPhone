@@ -24,7 +24,6 @@ class Phones {
             }
             System.out.printf("%s: %s \n", item.getKey(), phones);
         }
-       
     }
 public static void main(String[] args) {
         Map <String, ArrayList <Integer>> bookPhone = new HashMap<>();
@@ -34,16 +33,21 @@ public static void main(String[] args) {
         addNumber("Sidorov", 8956477, bookPhone);
         addNumber("Ivanov", 12345678, bookPhone);
         addNumber("Petrov", 787897, bookPhone);
-        
         System.out.print(bookPhone + "\n\n");
-        System.out.println(bookPhone.get("Ivanov"));
-        var sort_vrem = new ArrayList<>(bookPhone.get("Ivanov"));
-        Collections.sort(sort_vrem, Collections.reverseOrder());
-        System.out.println(sort_vrem);
-        bookPhone.put("Ivanov", sort_vrem);
+        // System.out.print(bookPhone + "\n\n");
+        // System.out.println(bookPhone.get("Ivanov"));
+        // var sort_vrem = new ArrayList<>(bookPhone.get("Ivanov"));
+        // Collections.sort(sort_vrem, Collections.reverseOrder());
+        // System.out.println(sort_vrem);
+        // bookPhone.put("Ivanov", sort_vrem);
 
-
+        //Перебираем Hashmap, используя цикл for с методом keySet():
+        for (String key : bookPhone.keySet()) {
+            var sort_vrem = new ArrayList<>(bookPhone.get(key));
+            Collections.sort(sort_vrem, Collections.reverseOrder());
+            bookPhone.put(key, sort_vrem);
+        }
         printBook(bookPhone);
-        
+  
     }
 }
